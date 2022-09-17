@@ -2,6 +2,19 @@ import re
 import string
 import math
 
+
+"""Given an integer x, return true if x is palindrome integer."""
+def isPalindrome(x: int) -> bool:
+    if x < 0:
+        return False
+
+    list_x = list(str(x))
+    if list_x == list(reversed(list_x)):
+        return True
+    
+    return False
+        
+
 def add(a, b):
     return a + b
 
