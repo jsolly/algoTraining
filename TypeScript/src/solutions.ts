@@ -9,4 +9,11 @@ export class Kata {
         const squaredArrayToStringJoinedToNumber = Number(squaredArrayToStringJoined);
         return squaredArrayToStringJoinedToNumber;
     }
+
+    static squareDigits2(num: number) {
+        return +num.toString()
+                   .split('')
+                   .map(n => Math.pow(+n,2))
+                   .join('');
+      }
   }
