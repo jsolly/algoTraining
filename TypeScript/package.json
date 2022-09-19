@@ -11,9 +11,22 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.23.2",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.0",
-    "vitest": "^0.23.2"
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "@vitest/coverage-c8": "^0.23.1",
+    "cypress": "^10.7.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-extra-rules": "^0.0.0-development",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tsdoc": "^0.2.16",
+    "husky": "^8.0.1",
+    "jsdom": "^20.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
+    "typescript": "^4.8.3",
+    "vite": "^3.0.9",
+    "vitest": "^0.23.1"
   }
 }
