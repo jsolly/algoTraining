@@ -3,5 +3,8 @@
         {
             "path": "../TypeScript"
         }
-    ]
+    ],
+    "settings": {
+        "editor.formatOnSave": true
+    }
 }
