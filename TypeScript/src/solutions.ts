@@ -1,3 +1,18 @@
+/*Given two strings s and t, determine if they are isomorphic.*/
+export function isIsomorphic(s: string, t: string): boolean {
+  const SmapToT: Record<string, string> = {};
+  const TmapToS: Record<string, string> = {};
+  for (let i = 0; i < s.length; i++) {
+    if (!SmapToT[s[i]] && !TmapToS[t[i]]) {
+      SmapToT[s[i]] = t[i];
+      TmapToS[t[i]] = s[i];
+    } else if (SmapToT[s[i]] != t[i] || TmapToS[t[i]] != s[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 /*A Tidy number is a number whose digits are in non-decreasing order.*/
 export function tidyNumber(num: number): boolean {
   const numSplitToString = num.toString().split('');
