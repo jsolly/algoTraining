@@ -1,6 +1,11 @@
 import { expect, test } from 'vitest';
 import * as Solution from '../src/solutions';
 
+test.concurrent('isSubsequence', () => {
+  expect(Solution.isSubsequence('abc', 'ahbgdc')).toBe(true);
+  expect(Solution.isSubsequence('axc', 'ahbgdc')).toBe(false);
+});
+
 test.concurrent('isIsomorphic', () => {
   expect(Solution.isIsomorphic('egg', 'add')).toBe(true);
   expect(Solution.isIsomorphic('foo', 'bar')).toBe(false);

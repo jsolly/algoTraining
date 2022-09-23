@@ -1,3 +1,20 @@
+/* Given two strings s and t, return true if s is a subsequence of t, or false otherwise. */
+export function isSubsequence(s: string, t: string): boolean {
+  let counter = 0;
+  let pointerA = 0;
+  let pointerB = 0;
+  while (pointerA < t.length) {
+    if (t[pointerA] === s[pointerB]) {
+      counter++;
+      pointerA++;
+      pointerB++;
+    } else {
+      pointerA++;
+    }
+  }
+  return s.length === counter;
+}
+
 /*Given two strings s and t, determine if they are isomorphic.*/
 export function isIsomorphic(s: string, t: string): boolean {
   const SmapToT: Record<string, string> = {};
