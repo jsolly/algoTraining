@@ -1,3 +1,43 @@
+
+/*
+You are given the heads of two sorted linked lists list1 and list2.
+
+Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+Return the head of the merged linked list.
+*/
+
+
+class ListNode {
+       val: number
+       next: ListNode | null
+       constructor(val?: number, next?: ListNode | null) {
+           this.val = (val===undefined ? 0 : val)
+           this.next = (next===undefined ? null : next)
+       }
+   }
+
+export function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+  const head: ListNode = new ListNode();
+  let curr: ListNode = head;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      curr.next = l1;
+      l1 = l1.next;
+    } else {
+      curr.next = l2;
+      l2 = l2.next;
+    }
+    curr = curr.next;
+  }
+  curr.next = l1 || l2;
+  return head.next;
+}
+
+
+
+
+
 /* Given two strings s and t, return true if s is a subsequence of t, or false otherwise. */
 export function isSubsequence(s: string, t: string): boolean {
   let counter = 0;

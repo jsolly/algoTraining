@@ -16,7 +16,6 @@ function isSubsequence(s: string, t: string): boolean {
     function helper(s: string, index: number, path: string): void {
       // Print the subsequence when reaching the leaf of recursion tree
       if (index == myString.length) {
-        // Condition to avoid printing empty subsequence
         if (path.length > 0) {
           subSequences[path] = true;
         }

@@ -1,6 +1,15 @@
 import { expect, test } from 'vitest';
 import * as Solution from '../src/solutions';
 
+
+test.concurrent('Merge Two Sorted Linked Lists', () => {
+  const list1 = [1, 2, 4];
+  const list2 = [1, 3, 4];
+  const expected = [1, 1, 2, 3, 4, 4];
+  const actual = Solution.mergeTwoLists(list1, list2);
+  expect(actual).toEqual(expected);
+});
+
 test.concurrent('isSubsequence', () => {
   expect(Solution.isSubsequence('abc', 'ahbgdc')).toBe(true);
   expect(Solution.isSubsequence('axc', 'ahbgdc')).toBe(false);
