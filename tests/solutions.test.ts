@@ -1,12 +1,18 @@
 import { expect, test } from 'vitest';
 import * as Solution from '../src/solutions';
-
+import { ListNode } from '../src/utils';
 
 test.concurrent('Merge Two Sorted Linked Lists', () => {
-  const list1 = [1, 2, 4];
-  const list2 = [1, 3, 4];
-  const expected = [1, 1, 2, 3, 4, 4];
-  const actual = Solution.mergeTwoLists(list1, list2);
+  const listNode1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+  const listNode2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+  const expected = new ListNode(
+    1,
+    new ListNode(
+      1,
+      new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4)))),
+    ),
+  );
+  const actual = Solution.mergeTwoLists(listNode1, listNode2);
   expect(actual).toEqual(expected);
 });
 
