@@ -10,5 +10,6 @@
         ".",
         "-p",
         "test_*.py"
-    ]
+    ],
+    "editor.formatOnSave": true
 }
