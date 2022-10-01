@@ -1,3 +1,40 @@
+import { ListNode } from './utils';
+
+/*
+Given the head of a singly linked list, return the middle node of the linked list.
+
+If there are two middle nodes, return the second middle node.
+*/
+
+export function middleNode(head: ListNode | null): ListNode | null {
+  if (!head) {
+    return null;
+  }
+  let rabbit = head.next;
+  let turtle = head;
+
+  while (rabbit) {
+    rabbit = rabbit.next?.next;
+    turtle = turtle.next;
+  }
+
+  return turtle;
+}
+
+/*
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+*/
+
+export function reverseList(head: ListNode | null): ListNode | null {
+  let n = null,
+    h = head;
+  while (h !== null) {
+    n = new ListNode(h.val, n);
+    h = h.next;
+  }
+  return n;
+}
+
 /*
 You are given the heads of two sorted linked lists list1 and list2.
 
@@ -6,7 +43,6 @@ Merge the two lists in a one sorted list. The list should be made by splicing to
 Return the head of the merged linked list.
 */
 
-import { ListNode } from './utils';
 export function mergeTwoLists(
   l1: ListNode | null,
   l2: ListNode | null,

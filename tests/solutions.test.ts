@@ -2,6 +2,32 @@ import { expect, test } from 'vitest';
 import * as Solution from '../src/solutions';
 import { ListNode } from '../src/utils';
 
+test('middleNode', () => {
+  expect(Solution.middleNode(null)).toBe(null);
+  expect(Solution.middleNode(new ListNode(1))).toBe(new ListNode(1));
+  expect(Solution.middleNode(new ListNode(1, new ListNode(2)))).toBe(
+    new ListNode(2),
+  );
+  expect(Solution.middleNode(new ListNode(1, new ListNode(2, new ListNode(3))))).toBe(
+    new ListNode(2, new ListNode(3)),
+  );
+
+test.concurrent('Reverse Linked List', () => {
+  const head = new ListNode(
+    1,
+    new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))),
+  );
+  const expected = new ListNode(
+    5,
+    new ListNode(4, new ListNode(3, new ListNode(2, new ListNode(1)))),
+  );
+  expect(Solution.reverseList(head)).toEqual(expected);
+
+  const head2 = new ListNode(1, new ListNode(2));
+  const expected2 = new ListNode(2, new ListNode(1));
+  expect(Solution.reverseList(head2)).toEqual(expected2);
+});
+
 test.concurrent('Merge Two Sorted Linked Lists', () => {
   const listNode1 = new ListNode(1, new ListNode(2, new ListNode(4)));
   const listNode2 = new ListNode(1, new ListNode(3, new ListNode(4)));
