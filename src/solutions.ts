@@ -10,12 +10,14 @@ export function middleNode(head: ListNode | null): ListNode | null {
   if (!head) {
     return null;
   }
-  let rabbit = head.next;
-  let turtle = head;
+  let rabbit: ListNode | undefined | null = head.next;
+  let turtle: ListNode | null = head;
 
   while (rabbit) {
     rabbit = rabbit.next?.next;
-    turtle = turtle.next;
+    if (turtle.next) {
+      turtle = turtle.next;
+    }
   }
 
   return turtle;

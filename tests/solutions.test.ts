@@ -3,14 +3,15 @@ import * as Solution from '../src/solutions';
 import { ListNode } from '../src/utils';
 
 test('middleNode', () => {
-  expect(Solution.middleNode(null)).toBe(null);
-  expect(Solution.middleNode(new ListNode(1))).toBe(new ListNode(1));
-  expect(Solution.middleNode(new ListNode(1, new ListNode(2)))).toBe(
+  expect(Solution.middleNode(null)).toStrictEqual(null);
+  expect(Solution.middleNode(new ListNode(1))).toStrictEqual(new ListNode(1));
+  expect(Solution.middleNode(new ListNode(1, new ListNode(2)))).toStrictEqual(
     new ListNode(2),
   );
-  expect(Solution.middleNode(new ListNode(1, new ListNode(2, new ListNode(3))))).toBe(
-    new ListNode(2, new ListNode(3)),
-  );
+  expect(
+    Solution.middleNode(new ListNode(1, new ListNode(2, new ListNode(3)))),
+  ).toStrictEqual(new ListNode(2, new ListNode(3)));
+});
 
 test.concurrent('Reverse Linked List', () => {
   const head = new ListNode(
