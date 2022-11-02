@@ -2,8 +2,9 @@ import string
 from typing import List
 
 
-def runningSum(self, nums: List[int]) -> List[int]:
-    return True
+def running_sum(nums: List[int]) -> List[int]:
+    cumsum = 0
+    return [cumsum := cumsum + i for i in nums]
 
 
 """Given an integer x, return true if x is palindrome integer."""
