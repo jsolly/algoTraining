@@ -2,6 +2,16 @@ import string
 from typing import List
 
 
+def pivotIndex(nums):
+    total = sum(nums)
+    leftsum = 0
+    for i, x in enumerate(nums):
+        if leftsum == (total - leftsum - x):
+            return i
+        leftsum += x
+    return -1
+
+
 def running_sum(nums: List[int]) -> List[int]:
     cumsum = 0
     return [cumsum := cumsum + i for i in nums]

@@ -3,6 +3,10 @@ import solutions
 
 
 class TestClass(unittest.TestCase):
+    def test_pivotIndex(self):
+        self.assertEqual(solutions.pivotIndex([1, 7, 3, 6, 5, 6]), 3)
+        self.assertEqual(solutions.pivotIndex([1, 2, 3]), -1)
+
     def test_running_sum(self):
         self.assertEqual(solutions.running_sum([1, 2, 3, 4]), [1, 3, 6, 10])
         self.assertEqual(solutions.running_sum([1, 1, 1, 1, 1]), [1, 2, 3, 4, 5])
