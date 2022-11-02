@@ -1,6 +1,5 @@
-import re
 import string
-import math
+from typing import List
 
 
 def runningSum(self, nums: List[int]) -> List[int]:
@@ -209,72 +208,6 @@ def parse_molecule(formula):
                 add_to_element_dict(base_dict, element, atoms)
 
         return base_dict
-
-    def parse_standalone_molecules(formula) -> dict:
-        temp_dict = {}
-        two_character_molecule_pattern = re.compile("([A-Z][a-z]\d*)")
-        matches = two_character_molecule_pattern.findall(formula)
-        if matches:
-            try:
-                add_to_element_dict(temp_dict, matches[0], matches[1])
-            except IndexError:
-                add_to_element_dict(temp_dict, matches[0])
-
-        single_character_molecule_pattern = re.compile("([A-Z]\d*)")
-        matches = single_character_molecule_pattern.findall(formula)
-        if matches:
-            for match in matches:
-                if len(match) > 1:
-                    add_to_element_dict(temp_dict, element=match[0], atoms=match[1])
-                else:
-                    add_to_element_dict(temp_dict, element=match)
-
-        return temp_dict
-
-    def parse_brackets(formula):
-        temp_dict = {}
-        non_capture_open_bracket = "(?:\[)"
-        non_capture_close_bracket = "(?:\])"
-        bracket_pattern = re.compile(
-            f"{non_capture_open_bracket}(.+){non_capture_close_bracket}(\d+)"
-        )
-
-        matches = bracket_pattern.findall(formula)
-        for match in matches:
-            sub_formula = match[0]
-            count = int(match[1])
-            for i in range(count):
-                sub_dict = parse_molecule(sub_formula)
-                temp_dict = smart_combine_dicts(temp_dict, sub_dict)
-
-        return temp_dict
-
-    def parse_parentheses(formula):
-        non_capture_open_parenthesis = "(?:\()"
-        non_capture_close_parenthesis = "(?:\))"
-        parenthesis_pattern = re.compile(
-            f"{non_capture_open_parenthesis}(.+){non_capture_close_parenthesis}(\d*)"
-        )
-        matches = parenthesis_pattern.findall(formula)
-
-        for match in matches:
-            multiplier = int(match[1])
-            temp_molecule_dict = parse_standalone_molecules(match[0])
-            temp_molecule_dict = {
-                key: value * multiplier for key, value in temp_molecule_dict.items()
-            }
-
-        return temp_molecule_dict
-
-    if "[" in formula:
-        bracket_molecules = parse_brackets(formula)
-
-    if "(" in formula:
-        parentheses_molecules = parse_parentheses(formula)
-
-    standalone_molecules = parse_standalone_molecules(formula)
-
-    return True
 
 
 def rgb(r, g, b):
