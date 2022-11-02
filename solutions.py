@@ -3,7 +3,13 @@ import string
 import math
 
 
+def runningSum(self, nums: List[int]) -> List[int]:
+    return True
+
+
 """Given an integer x, return true if x is palindrome integer."""
+
+
 def isPalindrome(x: int) -> bool:
     if x < 0:
         return False
@@ -11,9 +17,9 @@ def isPalindrome(x: int) -> bool:
     list_x = list(str(x))
     if list_x == list(reversed(list_x)):
         return True
-    
+
     return False
-        
+
 
 def add(a, b):
     return a + b
@@ -21,10 +27,11 @@ def add(a, b):
 
 def divTime(r, y, n=0):
     while r >= y:
-        r = r -y
+        r = r - y
         n += 1
 
     return n
+
 
 def order(words: str) -> str:
     if not words:

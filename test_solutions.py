@@ -3,20 +3,17 @@ import solutions
 
 
 class TestClass(unittest.TestCase):
-
     def test_isPalindrome(self):
-        tests = {121: True, -121: False, 10:False}
+        tests = {121: True, -121: False, 10: False}
         for key, value in tests.items():
             self.assertEqual(solutions.isPalindrome(key), value)
-    
+
     def test_add(self):
         result = solutions.add(10, 20)
         self.assertEqual(result, 30)
 
     def test_order(self):
-        self.assertEqual(
-            solutions.order("is2 Thi1s T4est 3a"), "Thi1s is2 3a T4est"
-        )
+        self.assertEqual(solutions.order("is2 Thi1s T4est 3a"), "Thi1s is2 3a T4est")
         self.assertEqual(
             solutions.order("4of Fo1r pe6ople g3ood th5e the2"),
             "Fo1r the2 g3ood 4of th5e pe6ople",
@@ -55,12 +52,8 @@ class TestClass(unittest.TestCase):
 
     def test_solve_element_parity(self):  # Array element Parity
         self.assertEqual(solutions.solve_element_parity([1, -1, 2, -2, 3]), 3)
-        self.assertEqual(
-            solutions.solve_element_parity([-3, 1, 2, 3, -1, -4, -2]), -4
-        )
-        self.assertEqual(
-            solutions.solve_element_parity([1, -1, 2, -2, 3, 3]), 3
-        )
+        self.assertEqual(solutions.solve_element_parity([-3, 1, 2, 3, -1, -4, -2]), -4)
+        self.assertEqual(solutions.solve_element_parity([1, -1, 2, -2, 3, 3]), 3)
         self.assertEqual(
             solutions.solve_element_parity(
                 [-110, 110, -38, -38, -62, 62, -38, -38, -38]
@@ -89,9 +82,7 @@ class TestClass(unittest.TestCase):
         self.assertEqual(
             solutions.weather_info(50), "10.0 is above freezing temperature"
         )
-        self.assertEqual(
-            solutions.weather_info(23), "-5.0 is freezing temperature"
-        )
+        self.assertEqual(solutions.weather_info(23), "-5.0 is freezing temperature")
 
     def test_remove_leftmost_duplicates(self):  # Simple Remove Duplicates
         self.assertEqual(
@@ -134,15 +125,9 @@ class TestClass(unittest.TestCase):
         self.assertEqual(user.rank, -7)
 
     def test_rgb(self):  # RGB to HEX Conversion
-        self.assertEqual(
-            solutions.rgb(0, 0, 0), "000000", "testing zero values"
-        )
-        self.assertEqual(
-            solutions.rgb(1, 2, 3), "010203", "testing near zero values"
-        )
-        self.assertEqual(
-            solutions.rgb(255, 255, 255), "FFFFFF", "testing max values"
-        )
+        self.assertEqual(solutions.rgb(0, 0, 0), "000000", "testing zero values")
+        self.assertEqual(solutions.rgb(1, 2, 3), "010203", "testing near zero values")
+        self.assertEqual(solutions.rgb(255, 255, 255), "FFFFFF", "testing max values")
         self.assertEqual(
             solutions.rgb(254, 253, 252), "FEFDFC", "testing near max values"
         )
@@ -228,12 +213,8 @@ class TestClass(unittest.TestCase):
 
     def test_find_outlier(self):
         self.assertEqual(solutions.find_outlier([2, 4, 6, 8, 10, 3]), 3)
-        self.assertEqual(
-            solutions.find_outlier([2, 4, 0, 100, 4, 11, 2602, 36]), 11
-        )
-        self.assertEqual(
-            solutions.find_outlier([160, 3, 1719, 19, 11, 13, -21]), 160
-        )
+        self.assertEqual(solutions.find_outlier([2, 4, 0, 100, 4, 11, 2602, 36]), 11)
+        self.assertEqual(solutions.find_outlier([160, 3, 1719, 19, 11, 13, -21]), 160)
 
         self.assertEqual(
             solutions.find_outlier(
@@ -281,9 +262,7 @@ class TestClass(unittest.TestCase):
 
     def test_song_decoder(self):
         self.assertEqual(
-            solutions.song_decoder(
-                "WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"
-            ),
+            solutions.song_decoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"),
             "WE ARE THE CHAMPIONS MY FRIEND",
         )
 
