@@ -2,6 +2,44 @@ import string
 from typing import List
 
 
+def isSubsequence(s: str, t: str) -> bool:
+    LEFT_BOUND, RIGHT_BOUND = len(s), len(t)
+
+    def rec_isSubsequence(left_index, right_index):
+        # base cases
+        if left_index == LEFT_BOUND:
+            return True
+        if right_index == RIGHT_BOUND:
+            return False
+        # consume both strings or just the target string
+        if s[left_index] == t[right_index]:
+            left_index += 1
+        right_index += 1
+
+        return rec_isSubsequence(left_index, right_index)
+
+    return rec_isSubsequence(0, 0)
+
+
+def isIsomorphic(s: str, t: str):
+    mapping_s_t = {}
+    mapping_t_s = {}
+
+    for c1, c2 in zip(s, t):
+
+        # Case 1: No mapping exists in either of the dictionaries
+        if (c1 not in mapping_s_t) and (c2 not in mapping_t_s):
+            mapping_s_t[c1] = c2
+            mapping_t_s[c2] = c1
+
+        # Case 2: Ether mapping doesn't exist in one of the dictionaries or Mapping exists and
+        # it doesn't match in either of the dictionaries or both
+        elif mapping_s_t.get(c1) != c2 or mapping_t_s.get(c2) != c1:
+            return False
+
+    return True
+
+
 def pivotIndex(nums):
     total = sum(nums)
     leftsum = 0

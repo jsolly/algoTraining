@@ -3,6 +3,18 @@ import solutions
 
 
 class TestClass(unittest.TestCase):
+    def test_isSubsequence(self):
+        self.assertEqual(solutions.isSubsequence("abc", "ahbgdc"), True)
+        self.assertEqual(solutions.isSubsequence("axc", "ahbgdc"), False)
+        self.assertEqual(solutions.isSubsequence("acb", "ahbgdc"), False)
+
+    def test_isIsomorphic(self):
+        self.assertEqual(solutions.isIsomorphic("egg", "add"), True)
+        self.assertEqual(solutions.isIsomorphic("foo", "bar"), False)
+        self.assertEqual(solutions.isIsomorphic("paper", "title"), True)
+        self.assertEqual(solutions.isIsomorphic("ab", "aa"), False)
+        self.assertEqual(solutions.isIsomorphic("abab", "baba"), True)
+
     def test_pivotIndex(self):
         self.assertEqual(solutions.pivotIndex([1, 7, 3, 6, 5, 6]), 3)
         self.assertEqual(solutions.pivotIndex([1, 2, 3]), -1)
