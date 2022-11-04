@@ -1,8 +1,41 @@
 import string
-from typing import List
+from typing import List, Optional
 
 
-def isSubsequence(s: str, t: str) -> bool:
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
+    prev = None
+    curr = head
+    while curr:
+        next_temp = curr.next
+        curr.next = prev
+        if not next_temp:
+            return curr
+        prev = curr
+        curr = next_temp
+
+
+def merge_two_lists(
+    l1: Optional[ListNode], l2: Optional[ListNode]
+) -> Optional[ListNode]:
+    if l1 is None:
+        return l2
+    elif l2 is None:
+        return l1
+    elif l1.val < l2.val:
+        l1.next = merge_two_lists(l1.next, l2)
+        return l1
+    else:
+        l2.next = merge_two_lists(l1, l2.next)
+        return l2
+
+
+def is_subsequence(s: str, t: str) -> bool:
     LEFT_BOUND, RIGHT_BOUND = len(s), len(t)
 
     def rec_isSubsequence(left_index, right_index):
@@ -21,7 +54,7 @@ def isSubsequence(s: str, t: str) -> bool:
     return rec_isSubsequence(0, 0)
 
 
-def isIsomorphic(s: str, t: str):
+def is_isomorphic(s: str, t: str):
     mapping_s_t = {}
     mapping_t_s = {}
 
@@ -40,7 +73,7 @@ def isIsomorphic(s: str, t: str):
     return True
 
 
-def pivotIndex(nums):
+def pivot_index(nums):
     total = sum(nums)
     leftsum = 0
     for i, x in enumerate(nums):
@@ -58,7 +91,7 @@ def running_sum(nums: List[int]) -> List[int]:
 """Given an integer x, return true if x is palindrome integer."""
 
 
-def isPalindrome(x: int) -> bool:
+def is_palindrome(x: int) -> bool:
     if x < 0:
         return False
 

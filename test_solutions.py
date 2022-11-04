@@ -1,33 +1,64 @@
 import unittest
 import solutions
+from solutions import ListNode
 
 
 class TestClass(unittest.TestCase):
-    def test_isSubsequence(self):
-        self.assertEqual(solutions.isSubsequence("abc", "ahbgdc"), True)
-        self.assertEqual(solutions.isSubsequence("axc", "ahbgdc"), False)
-        self.assertEqual(solutions.isSubsequence("acb", "ahbgdc"), False)
+    def test_reverse_list(self):
+        l = ListNode(1)
+        l.next = ListNode(2)
+        l.next.next = ListNode(3)
+        l.next.next.next = ListNode(4)
+        l.next.next.next.next = ListNode(5)
+        result = solutions.reverse_list(l)
+        self.assertEqual(result.val, 5)
+        self.assertEqual(result.next.val, 4)
 
-    def test_isIsomorphic(self):
-        self.assertEqual(solutions.isIsomorphic("egg", "add"), True)
-        self.assertEqual(solutions.isIsomorphic("foo", "bar"), False)
-        self.assertEqual(solutions.isIsomorphic("paper", "title"), True)
-        self.assertEqual(solutions.isIsomorphic("ab", "aa"), False)
-        self.assertEqual(solutions.isIsomorphic("abab", "baba"), True)
+    def test_merge_two_lists(self):
+        # [1,2,4]
+        l1 = ListNode(1)
+        l1.next = ListNode(2)
+        l1.next.next = ListNode(4)
 
-    def test_pivotIndex(self):
-        self.assertEqual(solutions.pivotIndex([1, 7, 3, 6, 5, 6]), 3)
-        self.assertEqual(solutions.pivotIndex([1, 2, 3]), -1)
+        # [1,3,4]
+        l2 = ListNode(1)
+        l2.next = ListNode(3)
+        l2.next.next = ListNode(4)
+
+        result = solutions.merge_two_lists(l1, l2)
+        # [1,1,2,3,4,4]
+        self.assertEqual(result.val, 1)
+        self.assertEqual(result.next.val, 1)
+        self.assertEqual(result.next.next.val, 2)
+        self.assertEqual(result.next.next.next.val, 3)
+        self.assertEqual(result.next.next.next.next.val, 4)
+        self.assertEqual(result.next.next.next.next.next.val, 4)
+
+    def test_is_subsequence(self):
+        self.assertEqual(solutions.is_subsequence("abc", "ahbgdc"), True)
+        self.assertEqual(solutions.is_subsequence("axc", "ahbgdc"), False)
+        self.assertEqual(solutions.is_subsequence("acb", "ahbgdc"), False)
+
+    def test_is_isomorphic(self):
+        self.assertEqual(solutions.is_isomorphic("egg", "add"), True)
+        self.assertEqual(solutions.is_isomorphic("foo", "bar"), False)
+        self.assertEqual(solutions.is_isomorphic("paper", "title"), True)
+        self.assertEqual(solutions.is_isomorphic("ab", "aa"), False)
+        self.assertEqual(solutions.is_isomorphic("abab", "baba"), True)
+
+    def test_pivot_ndex(self):
+        self.assertEqual(solutions.pivot_index([1, 7, 3, 6, 5, 6]), 3)
+        self.assertEqual(solutions.pivot_index([1, 2, 3]), -1)
 
     def test_running_sum(self):
         self.assertEqual(solutions.running_sum([1, 2, 3, 4]), [1, 3, 6, 10])
         self.assertEqual(solutions.running_sum([1, 1, 1, 1, 1]), [1, 2, 3, 4, 5])
         self.assertEqual(solutions.running_sum([3, 1, 2, 10, 1]), [3, 4, 6, 16, 17])
 
-    def test_isPalindrome(self):
+    def test_is_palindrome(self):
         tests = {121: True, -121: False, 10: False}
         for key, value in tests.items():
-            self.assertEqual(solutions.isPalindrome(key), value)
+            self.assertEqual(solutions.is_palindrome(key), value)
 
     def test_add(self):
         result = solutions.add(10, 20)
