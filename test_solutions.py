@@ -4,6 +4,16 @@ from solutions import ListNode
 
 
 class TestClass(unittest.TestCase):
+    def test_longest_palindrome(self):
+        self.assertEqual(solutions.longest_palindrome("a"), 1)
+        self.assertEqual(solutions.longest_palindrome("abccccdd"), 7)
+        self.assertEqual(solutions.longest_palindrome("ccc"), 3)
+        self.assertEqual(solutions.longest_palindrome("bananas"), 5)
+
+    def test_max_profit(self):
+        self.assertEqual(solutions.max_profit([7, 1, 5, 3, 6, 4]), 5)
+        self.assertEqual(solutions.max_profit([7, 6, 4, 3, 1]), 0)
+
     def test_reverse_list(self):
         l = ListNode(1)
         l.next = ListNode(2)

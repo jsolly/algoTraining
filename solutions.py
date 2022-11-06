@@ -1,11 +1,39 @@
 import string
 from typing import List, Optional
+from collections import defaultdict
 
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
+def longest_palindrome(s: str) -> int:
+    pairs = 0
+    unpaired_chars = set()
+
+    for char in s:
+        if char in unpaired_chars:
+            pairs += 1
+            unpaired_chars.remove(char)
+        else:
+            unpaired_chars.add(char)
+
+    return pairs * 2 + 1 if unpaired_chars else pairs * 2
+
+
+def max_profit(prices: List[int]) -> int:
+    highest_difference = 0
+    min_so_far = prices[0]
+
+    for val in prices[1:]:
+        if val < min_so_far:
+            min_so_far = val
+        else:
+            highest_difference = max(highest_difference, val - min_so_far)
+
+    return highest_difference
 
 
 def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
