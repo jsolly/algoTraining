@@ -1,9 +1,30 @@
 import unittest
 import solutions
 from solutions import ListNode
+from solutions import TreeNode
+from solutions import Node
 
 
 class TestClass(unittest.TestCase):
+    def test_search(self):
+        self.assertEqual(solutions.search([-1, 0, 3, 5, 9, 12], 9), 4)
+        self.assertEqual(solutions.search([-1, 0, 3, 5, 9, 12], 2), -1)
+
+    def test_preorder(self):
+        root = Node(1)
+        root.children = [Node(3), Node(2), Node(4)]
+        root.children[0].children = [Node(5), Node(6)]
+        self.assertEqual(solutions.preorder(root), [1, 3, 5, 6, 2, 4])
+
+    def test_level_order(self):
+        # [3,9,20,null,null,15,7]
+        tree = solutions.TreeNode(3)
+        tree.left = solutions.TreeNode(9)
+        tree.right = solutions.TreeNode(20)
+        tree.right.left = solutions.TreeNode(15)
+        tree.right.right = solutions.TreeNode(7)
+        self.assertEqual(solutions.level_order_iterative(tree), [[3], [9, 20], [15, 7]])
+
     def test_longest_palindrome(self):
         self.assertEqual(solutions.longest_palindrome("a"), 1)
         self.assertEqual(solutions.longest_palindrome("abccccdd"), 7)
