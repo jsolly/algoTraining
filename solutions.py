@@ -1,11 +1,122 @@
 import string
 from typing import List, Optional
+from collections import defaultdict
+import math
 
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def search(nums: List[int], target: int) -> int:
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return -1
+
+
+def preorder(root: "Node", ans: list = None) -> List[int]:
+    if root is None:
+        return []
+
+    stack = [root]
+    output = []
+    while stack:
+        root = stack.pop()
+        output.append(root.val)
+        if root.children:
+            stack.extend(root.children[::-1])
+
+    return output
+
+
+def level_order_iterative(root: Optional[TreeNode]) -> List[List[int]]:
+    if root is None:
+        return []
+    queue = [root]
+    next_queue = []
+    level = []
+    result = []
+    while queue != []:
+        for node in queue:
+            level.append(node.val)
+            if node.left is not None:
+                next_queue.append(node.left)
+            if node.right is not None:
+                next_queue.append(node.right)
+        result.append(level)
+        level = []
+        queue = next_queue
+        next_queue = []
+    return result
+
+
+def level_order_recursive(root: Optional[TreeNode]) -> List[List[int]]:
+    d = defaultdict(list)
+
+    def dfs(node, level):
+        if node:
+            d[level].append(node.val)
+            if node.left:
+                dfs(node.left, level + 1)
+
+            if node.right:
+                dfs(node.right, level + 1)
+
+    dfs(root, 0)
+
+    return list(d.values())
+
+
+def longest_palindrome(s: str) -> int:
+    pairs = 0
+    unpaired_chars = set()
+
+    for char in s:
+        if char in unpaired_chars:
+            pairs += 1
+            unpaired_chars.remove(char)
+        else:
+            unpaired_chars.add(char)
+
+    return pairs * 2 + 1 if unpaired_chars else pairs * 2
+
+
+def max_profit(prices: List[int]) -> int:
+    highest_difference = 0
+    min_so_far = prices[0]
+
+    for val in prices[1:]:
+        if val < min_so_far:
+            min_so_far = val
+        else:
+            highest_difference = max(highest_difference, val - min_so_far)
+
+    return highest_difference
 
 
 def detect_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
