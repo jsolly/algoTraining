@@ -8,6 +8,25 @@ class ListNode:
         self.next = next
 
 
+def detect_cycle(head: Optional[ListNode]) -> Optional[ListNode]:
+    visited = []
+
+    while head:
+        if head in visited:
+            return head
+        visited.append(head)
+        head = head.next
+
+
+def middle_node(head: Optional[ListNode]) -> Optional[ListNode]:
+    slow = fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
+
 def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
     prev = None
     curr = head

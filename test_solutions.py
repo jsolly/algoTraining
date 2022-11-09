@@ -4,6 +4,48 @@ from solutions import ListNode
 
 
 class TestClass(unittest.TestCase):
+    def test_detect_cycle(self):
+        # [3,2,0,-4]
+        head = ListNode(3)
+        head.next = ListNode(2)
+        head.next.next = ListNode(0)
+        head.next.next.next = ListNode(-4)
+        head.next.next.next.next = head.next
+        self.assertEqual(solutions.detect_cycle(head), head.next)
+
+        # [1,2]
+        head2 = ListNode(1)
+        head2.next = ListNode(2)
+        head2.next.next = head2
+        self.assertEqual(solutions.detect_cycle(head2), head2)
+
+    def test_middle_node(self):
+        # [1,2,3,4,5]
+        l = ListNode(1)
+        l.next = ListNode(2)
+        l.next.next = ListNode(3)
+        l.next.next.next = ListNode(4)
+        l.next.next.next.next = ListNode(5)
+
+        result = solutions.middle_node(l)
+        # [3,4,5]
+        self.assertEqual(result.val, 3)
+        self.assertEqual(result.next.val, 4)
+        self.assertEqual(result.next.next.val, 5)
+
+        l2 = ListNode(1)
+        l2.next = ListNode(2)
+        l2.next.next = ListNode(3)
+        l2.next.next.next = ListNode(4)
+        l2.next.next.next.next = ListNode(5)
+        l2.next.next.next.next.next = ListNode(6)
+
+        result2 = solutions.middle_node(l2)
+        # [4,5,6]
+        self.assertEqual(result2.val, 4)
+        self.assertEqual(result2.next.val, 5)
+        self.assertEqual(result2.next.next.val, 6)
+
     def test_reverse_list(self):
         l = ListNode(1)
         l.next = ListNode(2)
